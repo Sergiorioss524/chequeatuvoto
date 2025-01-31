@@ -12,6 +12,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { PoliticalPartyCarousel } from "./components/political-party-carousel"
+import { Navbar } from "./components/navbar"
+import { Footer } from "./components/footer"
 
 const features = [
   {
@@ -94,94 +96,101 @@ export default function Home() {
   }
 
   return (
-    <div className="py-28">
-      <div className="max-w-screen-2xl mx-auto px-8">
-        <div className="max-w-xl mx-auto lg:text-center">
-          <p className="text-2xl font-bold md:text-3xl">Features you need to understand your website traffic</p>
-          <p className="text-foreground/60 mt-6 md:text-lg">
-            From real-time insights to in-depth user tracking, get the tools to make smarter, data-driven decisions.
-          </p>
-        </div>
+    <>
+      <Navbar />
+      <main className="py-16">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mx-auto lg:text-center">
+            <h1 className="text-3xl font-bold sm:text-4xl">Features you need to understand your website traffic</h1>
+            <p className="mt-4 text-lg text-foreground/60">
+              From real-time insights to in-depth user tracking, get the tools to make smarter, data-driven decisions.
+            </p>
+          </div>
 
-        <div className="max-w-2xl mx-auto mt-16 md:mt-20 lg:mt-24 lg:max-w-4xl">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2 lg:gap-y-16">
-            {features.map((feature) => (
-              <div key={feature.name} className="relative pl-16 pb-12">
-                <div className="font-semibold">
-                  <div className="absolute left-0 top-0 flex w-9 h-9 items-center justify-center rounded-lg border-[1.5px] border-foreground">
-                    <feature.icon aria-hidden="true" className="h-5 w-5 stroke-[1.5px]" />
+          <div id="features" className="mt-16 sm:mt-20 lg:mt-24 max-w-4xl mx-auto">
+            <div className="grid gap-8 sm:grid-cols-2">
+              {features.map((feature) => (
+                <div key={feature.name} className="relative pl-12">
+                  <div className="font-semibold mb-2">
+                    <div className="absolute left-0 top-0 flex w-8 h-8 items-center justify-center rounded-lg border border-foreground/20">
+                      <feature.icon aria-hidden="true" className="h-4 w-4" />
+                    </div>
+                    {feature.name}
                   </div>
-                  {feature.name}
-                </div>
-                <div className="text-foreground/60 mt-2">{feature.description}</div>
-                <Button variant="outline" size="sm" className="mt-4" onClick={() => toggleFeature(feature.name)}>
-                  {expandedFeature === feature.name ? (
-                    <>
-                      Less Info <ChevronUp className="ml-2 h-4 w-4" />
-                    </>
-                  ) : (
-                    <>
-                      More Info <ChevronDown className="ml-2 h-4 w-4" />
-                    </>
+                  <div className="text-sm text-foreground/60">{feature.description}</div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="mt-2 p-0 h-auto"
+                    onClick={() => toggleFeature(feature.name)}
+                  >
+                    {expandedFeature === feature.name ? (
+                      <>
+                        Less Info <ChevronUp className="ml-1 h-3 w-3" />
+                      </>
+                    ) : (
+                      <>
+                        More Info <ChevronDown className="ml-1 h-3 w-3" />
+                      </>
+                    )}
+                  </Button>
+                  {expandedFeature === feature.name && (
+                    <div className="mt-2 text-sm text-foreground/80">{feature.moreInfo}</div>
                   )}
-                </Button>
-                {expandedFeature === feature.name && (
-                  <div className="mt-4 text-sm text-foreground/80">{feature.moreInfo}</div>
-                )}
-                <Button
-                  variant="destructive"
-                  size="sm"
-                  className="absolute bottom-0 left-16"
-                  onClick={() => scrollToRisks(feature.name)}
-                >
-                  Risks
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div id="risks-section" className="mt-24 max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8">Feature Risks</h2>
-          {features.map((feature) => (
-            <div
-              key={feature.name}
-              className={`mb-8 p-4 border rounded-lg ${
-                activeRisk === feature.name ? "border-red-500" : "border-gray-200"
-              }`}
-            >
-              <h3 className="text-lg font-semibold mb-2">{feature.name}</h3>
-              <p>{feature.risks}</p>
+                  <Button
+                    variant="link"
+                    size="sm"
+                    className="mt-2 p-0 h-auto text-destructive"
+                    onClick={() => scrollToRisks(feature.name)}
+                  >
+                    View Risks
+                  </Button>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
 
-        <div className="mt-24 max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8">Feature Timeline</h2>
-          <div className="relative border-l border-gray-200 dark:border-gray-700">
-            {timelineEvents.map((event, index) => (
-              <div key={index} className="mb-10 ml-4">
-                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                <Card>
-                  <CardContent className="pt-4">
-                    <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                      {event.date}
-                    </time>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{event.title}</h3>
-                    <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{event.description}</p>
-                  </CardContent>
-                </Card>
+          <div id="risks-section" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6">Feature Risks</h2>
+            {features.map((feature) => (
+              <div
+                key={feature.name}
+                className={`mb-6 p-4 border rounded-lg ${
+                  activeRisk === feature.name ? "border-destructive" : "border-foreground/20"
+                }`}
+              >
+                <h3 className="text-lg font-semibold mb-2">{feature.name}</h3>
+                <p className="text-sm text-foreground/80">{feature.risks}</p>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className="mt-24">
-          <h2 className="text-2xl font-bold mb-8 text-center">Political Parties</h2>
-          <PoliticalPartyCarousel />
+          <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
+            <div className="relative border-l border-foreground/20">
+              {timelineEvents.map((event, index) => (
+                <div key={index} className="mb-8 ml-4">
+                  <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
+                  <Card className="border-foreground/20">
+                    <CardContent className="p-4">
+                      <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
+                      <h3 className="text-lg font-semibold">{event.title}</h3>
+                      <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div id="parties" className="mt-16 sm:mt-20">
+            <h2 className="text-2xl font-bold mb-6 text-center">Political Parties</h2>
+            <PoliticalPartyCarousel />
+          </div>
         </div>
-      </div>
-    </div>
+      </main>
+      <Footer />
+    </>
   )
 }
 
