@@ -99,19 +99,12 @@ const timelineEvents = [
 
 export default function Home() {
   const [expandedFeature, setExpandedFeature] = useState<string | null>(null)
-  const [activeRisk, setActiveRisk] = useState<string | null>(null)
+  const [] = useState<string | null>(null)
 
   const toggleFeature = (name: string) => {
     setExpandedFeature(expandedFeature === name ? null : name)
   }
 
-  const scrollToRisks = (name: string) => {
-    setActiveRisk(name)
-    const risksSection = document.getElementById("risks-section")
-    if (risksSection) {
-      risksSection.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   return (
     <>
