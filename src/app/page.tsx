@@ -122,27 +122,48 @@ export default function Home() {
           </div>
 
           <div className="mt-16 space-y-8">
-            {features.map((feature) => (
-              <div key={feature.name} className="p-6 border rounded-lg shadow-md">
-                <h3 className="text-lg font-semibold flex items-center">
-                  <Info className="mr-2 text-blue-500" /> {feature.name}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">{feature.description}</p>
-                <Button variant="ghost" size="sm" className="mt-2" onClick={() => toggleFeature(feature.name)}>
-                  {expandedFeature === feature.name ? "Menos Info" : "Más Info"}
-                </Button>
-                <Button variant="destructive" size="sm" className="ml-2" onClick={() => toggleRisks(feature.name)}>
-                  Red Flag
-                </Button>
-                {expandedFeature === feature.name && <div className="mt-2 text-sm text-gray-800">{feature.moreInfo}</div>}
-                {expandedRisks === feature.name && (
-                  <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-2 rounded-lg">
-                    {feature.risks.map((risk, index) => <li key={index}>{risk}</li>)}
-                  </ul>
-                )}
-              </div>
-            ))}
+  {features.map((feature) => (
+    <div key={feature.name} className="p-6 border rounded-lg shadow-md">
+      <h3 className="text-lg font-semibold flex items-center">
+        <Info className="mr-2 text-blue-500" /> {feature.name}
+      </h3>
+      <p className="text-sm text-gray-600 mt-2">{feature.description}</p>
+      <Button variant="ghost" size="sm" className="mt-2" onClick={() => toggleFeature(feature.name)}>
+        {expandedFeature === feature.name ? "Menos Info" : "Más Info"}
+      </Button>
+      <Button variant="destructive" size="sm" className="ml-2" onClick={() => toggleRisks(feature.name)}>
+        Red Flag
+      </Button>
+      {expandedFeature === feature.name && <div className="mt-2 text-sm text-gray-800">{feature.moreInfo}</div>}
+      
+      {/* Display Risks */}
+      {expandedRisks === feature.name && (
+        <div className="mt-2 flex space-x-8">
+          {/* My Redflags Column */}
+          <div className="flex-1">
+            <h4 className="font-semibold text-red-700">My Redflags</h4>
+            <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-2 rounded-lg">
+              {feature.risks.map((risk, index) => (
+                <li key={index}>{risk}</li>
+              ))}
+            </ul>
           </div>
+
+          {/* Their Redflags Column */}
+          <div className="flex-1">
+            <h4 className="font-semibold text-red-700">Their Redflags</h4>
+            <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-2 rounded-lg">
+              {feature.risks.map((risk, index) => (
+                <li key={index}>{risk}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
           <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
 <h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
 <div className="relative border-l border-foreground/20">
