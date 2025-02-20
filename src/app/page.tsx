@@ -99,10 +99,14 @@ const timelineEvents = [
 
 export default function Home() {
   const [expandedFeature, setExpandedFeature] = useState<string | null>(null)
-  const [] = useState<string | null>(null)
+  const [expandedRisks, setExpandedRisks] = useState<string | null>(null)
 
   const toggleFeature = (name: string) => {
     setExpandedFeature(expandedFeature === name ? null : name)
+  }
+
+  const toggleRisks = (name: string) => {
+    setExpandedRisks(expandedRisks === name ? null : name)
   }
 
 
@@ -114,89 +118,56 @@ export default function Home() {
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl font-bold">
               TE AYUDAMOS A INFORMARTE ANTES DE VOTAR
-              </h1>
+            </h1>
             <p className="mt-4 text-base sm:text-lg text-gray-600">
-            Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar conscientemente y con información verificada de los candidatos, sus propuestas sus partidos políticos y agrupaciones ciudadanas. 
+              Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar conscientemente y con información verificada.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          <div className="mt-16 space-y-8">
             {features.map((feature) => (
               <div key={feature.name} className="p-6 border rounded-lg shadow-md">
                 <h3 className="text-lg font-semibold flex items-center">
                   <Info className="mr-2 text-blue-500" /> {feature.name}
                 </h3>
                 <p className="text-sm text-gray-600 mt-2">{feature.description}</p>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="mt-2"
-                  onClick={() => toggleFeature(feature.name)}
-                >
-                  {expandedFeature === feature.name ? (
-                    <>
-                      Menos Info <ChevronUp className="ml-1 h-4 w-4" />
-                    </>
-                  ) : (
-                    <>
-                      Más Info <ChevronDown className="ml-1 h-4 w-4" />
-                    </>
-                  )}
+                <Button variant="ghost" size="sm" className="mt-2" onClick={() => toggleFeature(feature.name)}>
+                  {expandedFeature === feature.name ? "Menos Info" : "Más Info"}
                 </Button>
-                <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => document.getElementById("risks-section")?.scrollIntoView({ behavior: "smooth" })}
-                  >
-                    Red Flag
-                  </Button>
-                {expandedFeature === feature.name && (
-                  <div className="mt-2 text-sm text-gray-800">{feature.moreInfo}</div>
+                <Button variant="destructive" size="sm" className="ml-2" onClick={() => toggleRisks(feature.name)}>
+                  Red Flag
+                </Button>
+                {expandedFeature === feature.name && <div className="mt-2 text-sm text-gray-800">{feature.moreInfo}</div>}
+                {expandedRisks === feature.name && (
+                  <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-2 rounded-lg">
+                    {feature.risks.map((risk, index) => <li key={index}>{risk}</li>)}
+                  </ul>
                 )}
               </div>
             ))}
           </div>
-          <div id="risks-section" className="mt-16">
-            <h2 className="text-2xl font-bold mb-6">Riesgos a considerar</h2>
-            {features.map((feature) => (
-              <div
-                key={feature.name}
-                className="mb-6 p-4 border rounded-lg shadow-md bg-red-50"
-              >
-                <h3 className="text-lg font-semibold flex items-center text-red-600">
-                  <AlertTriangle className="mr-2" /> {feature.name}
-                </h3>
-                <ul className="mt-2 list-disc list-inside text-red-700">
-                  {feature.risks.map((risk, index) => (
-                    <li key={index}>{risk}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
           <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
-            <div className="relative border-l border-foreground/20">
-              {timelineEvents.map((event, index) => (
-                <div key={index} className="mb-8 ml-4">
-                  <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
-                  <Card className="border-foreground/20">
-                    <CardContent className="p-4">
-                      <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
-                      <h3 className="text-lg font-semibold">{event.title}</h3>
-                      <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
+<h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
+<div className="relative border-l border-foreground/20">
+  {timelineEvents.map((event, index) => (
+    <div key={index} className="mb-8 ml-4">
+      <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
+      <Card className="border-foreground/20">
+        <CardContent className="p-4">
+          <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
+          <h3 className="text-lg font-semibold">{event.title}</h3>
+          <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
+        </CardContent>
+      </Card>
+    </div>
+  ))}
+</div>
+</div>
 
-          <div id="parties" className="mt-16 sm:mt-20">
-            <h2 className="text-2xl font-bold mb-6 text-center">Political Parties</h2>
-            <PoliticalPartyCarousel />
-          </div>
+<div id="parties" className="mt-16 sm:mt-20">
+<h2 className="text-2xl font-bold mb-6 text-center">Political Parties</h2>
+<PoliticalPartyCarousel />
+</div>
         </div>
       </main>
       <Footer />
@@ -204,3 +175,26 @@ export default function Home() {
   )
 }
 
+/* <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
+<h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
+<div className="relative border-l border-foreground/20">
+  {timelineEvents.map((event, index) => (
+    <div key={index} className="mb-8 ml-4">
+      <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
+      <Card className="border-foreground/20">
+        <CardContent className="p-4">
+          <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
+          <h3 className="text-lg font-semibold">{event.title}</h3>
+          <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
+        </CardContent>
+      </Card>
+    </div>
+  ))}
+</div>
+</div>
+
+<div id="parties" className="mt-16 sm:mt-20">
+<h2 className="text-2xl font-bold mb-6 text-center">Political Parties</h2>
+<PoliticalPartyCarousel />
+</div>
+*/
