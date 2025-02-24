@@ -15,14 +15,17 @@ const features = [
     name: "¿Sé para qué son estas elecciones? ¿Entiendo la importancia de mi voto?",
     description:
       "Este 2025 elegiremos al Presidente, Vicepresidente y representantes de la Asamblea Legislativa Plurinacional.",
-    moreInfo:"Este 2025, además de elegir al próximo Presidente y Vicepresidente del país, elegiremos a los representantes de la Asamblea Legislativa Plurinacional. Ellos básicamente se encargan de aprobar, proponer y crear leyes. En total elegiremos 130 diputados y diputadas y 36 senadores y senadoras, las y los candidatos varían según tu departamento y tu provincia. Elegiremos a la gente que dirigirá el destino de cada uno de nosotros durante 5 años porque de las decisiones políticas dependen nuestros ingresos económicos, nuestra salud, nuestra educación, nuestra seguridad y mucho más. Estas elecciones son delicadas porque vivimos una crisis política, económica y ambiental que se acentúa mes a mes, y que la sentimos todos.",
+    moreInfo:"Este 2025, además de elegir al próximo Presidente y Vicepresidente del país, elegiremos a los representantes de la Asamblea Legislativa Plurinacional. Ellos básicamente se encargan de aprobar, proponer y crear leyes. En total elegiremos 130 diputados y diputadas y 36 senadores y senadoras, las y los candidatos varían según tu departamento y tu provincia.\n\n Elegiremos a la gente que dirigirá el destino de cada uno de nosotros durante 5 años porque de las decisiones políticas dependen nuestros ingresos económicos, nuestra salud, nuestra educación, nuestra seguridad y mucho más. \n\n Estas elecciones son delicadas porque vivimos una crisis política, económica y ambiental que se acentúa mes a mes, y que la sentimos todos.",
     risks: [
-      "Pienso que la política no me afecta.",
-      "Voto solo porque es obligatorio.",
-      "Creo que mi voto no hace la diferencia.",
-      "Solo busco soluciones urgentes en mi candidato.",
-      "No encuentro información clara del OEP.",
+      "Pienso que la política no me afecta y por eso no es importante informarse.",
+      "Voto porque es obligatorio y para poder hacer transacciones bancarias.",
+      "Pienso a menudo que mi voto no hará la diferencia.",
+      "Pienso que tengo que votar por alguien que solo solucione lo urgente."
+
     ],
+    myrisk: [
+      "El OEP no brinda información digerible ni en medios de comunicación abiertos."
+    ]
   },
   {
     name: "¿Conozco a TODOS los binomios presidenciales? ¿Conozco sus historiales políticos?",
@@ -37,6 +40,10 @@ const features = [
       "Algún candidato tiene procesos por corrupción o malversación.",
       "Ha cambiado de partido de manera oportunista.",
     ],
+    myrisk: [
+      "Algún miembro del binomio tiene un proceso o más en su contra por corrupción, malversación de fondos, violencia o nepotismo.",
+      "Algún miembro del binomio ha cambiado de partido o postura de manera oportunista durante su carrera política."
+    ]
   },
   {
     name: "¿Conozco a los candidatos a parlamentarios que representarán mi departamento y provincia?",
@@ -46,10 +53,12 @@ const features = [
       "Es clave investigar sus antecedentes y evitar votar solo por propaganda.",
     risks: [
       "No sé quién es mi representante.",
-      "Nunca participó en política antes y parece que solo busca trabajo.",
-      "Solo repite el discurso de su partido.",
-      "Solo existe información de él en propaganda política.",
     ],
+    myrisk: [
+      "Nunca se involucró en temas políticos o sociales antes en tu localidad, ciudad o región y da la impresión que está buscando solo una pega o trabajo.",
+      "Cuando hablan en prensa o cualquier otro medio solo repiten el mismo discurso que el Presidente o Vicepresidente de su partido o alianza política. ",
+      "Solo existe información suya en forma de propaganda política."
+    ]
   },
   {
     name: "¿Las propuestas de los candidatos son realistas y están bien fundamentadas?",
@@ -58,11 +67,13 @@ const features = [
     moreInfo:
       "Es fundamental entender que nos están prometiendo, y más importante aún saber qué responden cuando alguien les pregunta el “cómo” lograrlo”. Muchas veces votar es una apuesta a ciegas, a veces dejamos al tink’azo votar pero es posible salir de la intuición intentando buscar el sentido lógico de la propuesta, es decir, qué si la posibilidad de lograr esas propuestas son reales.Es importante conocer sus propuestas para tener una idea general de cómo será el gobierno al menos en temas generales cómo:Trabajo y oportunidades, Salud, Educación, Justicia, Seguridad",
     risks: [
-      "Solo me informo en redes sociales y en contenido que me gusta.",
-      "Las propuestas solo atienden temas urgentes.",
-      "Las propuestas son contradictorias o poco viables.",
-      "El discurso se basa solo en ataques a otros candidatos.",
+      "Me informo de las propuestas solo en redes sociales y de solo contenido que me hace sentir cómodo o cómoda. ",
     ],
+    myrisk: [
+      "Todas sus propuestas están dirigidas a atender solo temas urgentes.",
+      "Sus propuestas son sumamente densas y tienen contradicciones importantes. ",
+      "Su discurso está basado principalmente en el ataque a otro candidato, partido, ideología o gestión gubernamental."
+    ]
   },
 ];
 const timelineEvents = [
@@ -113,10 +124,10 @@ export default function Home() {
       <main className="py-16 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold">
+            <h1 className="text-2xl sm:text-3xl font-bold font-round">
               TE AYUDAMOS A INFORMARTE ANTES DE VOTAR
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-gray-600">
+            <p className="mt-4 text-base sm:text-lg text-gray-600 font-round">
               Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar conscientemente y con información verificada.
             </p>
           </div>
@@ -124,7 +135,7 @@ export default function Home() {
           <div className="mt-16 space-y-8">
   {features.map((feature) => (
     <div key={feature.name} className="p-6 border rounded-lg shadow-md">
-      <h3 className="text-lg font-semibold flex items-center">
+      <h3 className="text-lg font-semibold flex items-center fomt-round">
         <Info className="mr-2 text-blue-500" /> {feature.name}
       </h3>
       <p className="text-sm text-gray-600 mt-2">{feature.description}</p>
@@ -141,7 +152,7 @@ export default function Home() {
         <div className="mt-2 flex space-x-8">
           {/* My Redflags Column */}
           <div className="flex-1">
-            <h4 className="font-semibold text-red-700">My Redflags</h4>
+            <h4 className="font-semibold text-red-700">Mis Redflags</h4>
             <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-2 rounded-lg">
               {feature.risks.map((risk, index) => (
                 <li key={index}>{risk}</li>
@@ -151,10 +162,10 @@ export default function Home() {
 
           {/* Their Redflags Column */}
           <div className="flex-1">
-            <h4 className="font-semibold text-red-700">Their Redflags</h4>
+            <h4 className="font-semibold text-red-700">Sus Redflags</h4>
             <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-2 rounded-lg">
-              {feature.risks.map((risk, index) => (
-                <li key={index}>{risk}</li>
+              {feature.myrisk.map((myrisk, index) => (
+                <li key={index}>{myrisk}</li>
               ))}
             </ul>
           </div>
@@ -183,7 +194,7 @@ export default function Home() {
 </div>
 
 <div id="parties" className="mt-16 sm:mt-20">
-<h2 className="text-2xl font-bold mb-6 text-center">Political Parties</h2>
+<h2 className="text-2xl font-bold mb-6 text-center">Partidos Politicos</h2>
 <PoliticalPartyCarousel />
 </div>
         </div>
