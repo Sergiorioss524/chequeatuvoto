@@ -3,13 +3,13 @@ import { Lato, Baloo_2 } from "next/font/google"; // Baloo_2 como alternativa re
 import "./globals.css";
 
 const lato = Lato({
-  variable: "--font-lato",
+  variable: "--font-primary",
   subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
 });
 
 const baloo = Baloo_2({
-  variable: "--font-baloo",
+  variable: "--font-secondary",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
