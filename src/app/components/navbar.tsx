@@ -25,9 +25,17 @@ export function Navbar() {
       <div className="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image src="/logo.svg" alt="Logo" width={120} height={40} className="h-auto w-auto" priority />
-          </Link>
+          <Link href="/" className="flex items-center h-16">
+  <Image
+    src="/logo.svg"
+    alt="Logo"
+    width={120}
+    height={40}
+    className="h-auto w-[120px] object-contain"
+    priority
+  />
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
