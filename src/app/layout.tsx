@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato, Baloo_2 } from "next/font/google"; // Baloo_2 como alternativa redondeada
+import { Lato, Baloo_2 } from "next/font/google"; 
 import "./globals.css";
 
 const lato = Lato({

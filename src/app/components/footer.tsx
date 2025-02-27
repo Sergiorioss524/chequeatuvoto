@@ -5,28 +5,44 @@ const footerLinks = [
   { name: "About", href: "#" },
   { name: "Privacy", href: "#" },
   { name: "Terms", href: "#" },
-    { name: "Contact", href: "#" },
+  { name: "Contact", href: "#" },
 ]
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t">
-      <div className="max-w-screen-2xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center sm:flex-row sm:justify-between">
+    <footer className="border-t border-border/40 bg-background">
+      <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
           <div className="flex items-center">
-          <Link href="/" className="flex items-center mt-4">
-            <Image src="/logo.svg" alt="Logo" width={140} height={120} />
-          </Link>
+            <Link href="/" className="flex items-center">
+            <Image 
+  src="/logo.svg" 
+  alt="Logo" 
+  width={110} 
+  height={40} 
+  className="h-auto w-auto" 
+  priority
+  onError={(e) => {
+    console.error('Error loading image:', e);
+  }}
+/>
+            </Link>
           </div>
-          <nav className="flex gap-6 mt-4 sm:mt-0">
+
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {footerLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-sm text-foreground/60 hover:text-foreground">
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+              >
                 {link.name}
               </Link>
             ))}
           </nav>
         </div>
-        <div className="mt-8 text-center text-sm text-foreground/60">
+
+        <div className="mt-4 text-center text-xs text-muted-foreground">
           &copy; {new Date().getFullYear()} Your Company, Inc. All rights reserved.
         </div>
       </div>

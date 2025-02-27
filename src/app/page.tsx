@@ -6,7 +6,6 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { PoliticalPartyCarousel } from "./components/political-party-carousel"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
 
@@ -78,32 +77,27 @@ const features = [
 ];
 const timelineEvents = [
   {
-    date: "January 2023",
-    title: "Launch of Real-Time Analytics",
-    description: "Introduced our cutting-edge real-time analytics feature, enabling instant insights for our users.",
+    date: "19 de abril",
+    title: "Convocatoria de elecciones",
+    description: "Fecha de convocatoria oficial para las elecciones presidenciales.",
   },
   {
-    date: "March 2023",
-    title: "Event Tracking Enhancement",
-    description: "Expanded our event tracking capabilities to cover a wider range of user interactions.",
+    date: "20 de mayo",
+    title: "Inscripción de candidaturas",
+    description: "Apertura del período de inscripción para los candidatos presidenciales y legislativos.",
   },
   {
-    date: "June 2023",
-    title: "A/B Testing Beta",
-    description:
-      "Rolled out the beta version of our A/B testing tool, allowing users to experiment with different designs.",
+    date: "17 de agosto",
+    title: "Elecciones presidenciales y legislativas",
+    description: "Día en que se llevarán a cabo las elecciones presidenciales y legislativas.",
   },
   {
-    date: "September 2023",
-    title: "Funnel Analysis Integration",
-    description: "Integrated advanced funnel analysis tools to help users optimize their conversion paths.",
+    date: "19 de octubre",
+    title: "Segunda vuelta presidencial",
+    description: "Fecha programada para la segunda vuelta presidencial, en caso de ser necesaria.",
   },
-  {
-    date: "December 2023",
-    title: "Comprehensive Dashboard Update",
-    description: "Launched a major update to our dashboard, bringing all features together for a seamless experience.",
-  },
-]
+];
+
 
 export default function Home() {
   const [expandedFeature, setExpandedFeature] = useState<string | null>(null)
@@ -176,7 +170,7 @@ export default function Home() {
 </div>
 
           <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
-<h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
+<h2 className="text-2xl font-bold mb-6 font-round">ELECCIONES PRESIDENCIALES Y LEGISLATIVAS </h2>
 <div className="relative border-l border-foreground/20">
   {timelineEvents.map((event, index) => (
     <div key={index} className="mb-8 ml-4">
@@ -194,8 +188,8 @@ export default function Home() {
 </div>
 
 <div id="parties" className="mt-16 sm:mt-20">
-<h2 className="text-2xl font-bold mb-6 text-center">Partidos Politicos</h2>
-<PoliticalPartyCarousel />
+<h2 className="text-2xl font-bold mb-6 text-center font-round">PARTIDOS POLITICOS</h2>
+<h3 className="text-2xl font-bold mb-6 text-center"> Este espacio se llenará a medida que candidatos y alianzas presenten información oficial </h3>
 </div>
         </div>
       </main>
@@ -204,26 +198,3 @@ export default function Home() {
   )
 }
 
-/* <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
-<h2 className="text-2xl font-bold mb-6">Feature Timeline</h2>
-<div className="relative border-l border-foreground/20">
-  {timelineEvents.map((event, index) => (
-    <div key={index} className="mb-8 ml-4">
-      <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
-      <Card className="border-foreground/20">
-        <CardContent className="p-4">
-          <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
-          <h3 className="text-lg font-semibold">{event.title}</h3>
-          <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
-        </CardContent>
-      </Card>
-    </div>
-  ))}
-</div>
-</div>
-
-<div id="parties" className="mt-16 sm:mt-20">
-<h2 className="text-2xl font-bold mb-6 text-center">Political Parties</h2>
-<PoliticalPartyCarousel />
-</div>
-*/
