@@ -169,29 +169,41 @@ export default function Home() {
   ))}
 </div>
 
-          <div id="timeline" className="mt-16 sm:mt-20 max-w-2xl mx-auto">
-<h2 className="text-2xl font-bold mb-6 font-round">ELECCIONES PRESIDENCIALES Y LEGISLATIVAS </h2>
-<div className="relative border-l border-foreground/20">
-  {timelineEvents.map((event, index) => (
-    <div key={index} className="mb-8 ml-4">
-      <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
-      <Card className="border-foreground/20">
-        <CardContent className="p-4">
-          <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
-          <h3 className="text-lg font-semibold">{event.title}</h3>
-          <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
-        </CardContent>
-      </Card>
-    </div>
-  ))}
-</div>
-</div>
+<div id="timeline" className="mt-16 sm:mt-20">
+            <h2 className="text-2xl font-bold mb-6 font-round">ELECCIONES PRESIDENCIALES Y LEGISLATIVAS </h2>
+            <div className="relative border-l border-foreground/20">
+              {timelineEvents.map((event, index) => (
+                <div key={index} className="mb-8 ml-4">
+                  <div className="absolute w-3 h-3 bg-foreground/20 rounded-full mt-1.5 -left-1.5 border border-background"></div>
+                  <Card className="border-foreground/20">
+                    <CardContent className="p-4">
+                      <time className="mb-1 text-sm font-normal text-foreground/60">{event.date}</time>
+                      <h3 className="text-lg font-semibold">{event.title}</h3>
+                      <p className="mt-2 text-sm text-foreground/80">{event.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
 
-<div id="parties" className="mt-16 sm:mt-20">
-<h2 className="text-2xl font-bold mb-6 text-center font-round">PARTIDOS POLITICOS</h2>
+      <div id="parties" className="mt-16 sm:mt-20">
+          <h2 className="text-2xl font-bold mb-6 text-center font-round">PARTIDOS POLITICOS</h2>
 <h3 className="text-2xl font-bold mb-6 text-center"> Este espacio se llenará a medida que candidatos y alianzas presenten información oficial </h3>
 </div>
         </div>
+
+        <div className="mt-16 text-center">
+            <Button
+              className="bg-gray-900 hover:bg-gray-950 text-white font-bold font-round py-3 px-8 rounded-lg shadow-lg transform transition-transform hover:scale-105 text-lg"
+              onClick={() => window.open("https://chequeabolivia.bo/", "_blank")}
+            >
+              Lucha contra la desinformación
+            </Button>
+            <p className="mt-3 text-sm text-gray-600">
+              Únete a nuestra campaña para combatir las noticias falsas y la desinformación electoral
+            </p>
+          </div>
       </main>
       <Footer />
     </>
