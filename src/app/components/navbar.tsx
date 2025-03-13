@@ -9,8 +9,8 @@ const navItems = [
   { name: "Features", href: "#features" },
   { name: "Timeline", href: "#timeline" },
   { name: "Parties", href: "#parties" },
-  { name: "Contact", href: "#" },
-  { name: "About", href: "#" },
+  { name: "Contact", href: "/contact" },
+  { name: "About", href: "/about" },
 ]
 
 export function Navbar() {

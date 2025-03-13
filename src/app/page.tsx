@@ -194,6 +194,139 @@ export default function Home() {
             </h3>
           </div>
 
+          <div id="bloques-preelectorales" className="mt-16 sm:mt-20">
+            <h2 className="text-3xl font-bold mb-6 text-center font-round">BLOQUES PREELECTORALES</h2>
+            <div className="mb-6 text-center max-w-3xl mx-auto">
+              <p className="text-base text-gray-600">
+                Aclaramos que no todos los actores políticos mencionados han confirmado su precandidatura o están
+                legalmente habilitados, sin embargo, este es un panorama general del escenario preelectoral hasta marzo
+                del 2025.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <div className="min-w-full">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                  {/* Bloque de Unidad Opositora */}
+                  <Card className="border-foreground/20 h-full">
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque de Unidad Opositora</h3>
+                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yO4Gno13323yOVqAYAa1unTxKWak1h.png"
+                          alt="Bloque de Unidad Opositora"
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                      <p className="text-sm mb-3">
+                        Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A
+                        excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo
+                        de Presidente del Comité Cívico Pro Santa Cruz.
+                      </p>
+                      <h4 className="font-semibold text-sm mb-2">Los actores políticos son:</h4>
+                      <ul className="list-disc list-inside text-sm">
+                        <li>Samuel Doria Medina</li>
+                        <li>Jorge Tuto Quiroga Ramírez</li>
+                        <li>Amparo Ballivián Cuellar</li>
+                        <li>Tomás Monasterio</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Bloque Liberal-libertario */}
+                  <Card className="border-foreground/20 h-full">
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque Liberal-libertario</h3>
+                      <p className="text-sm mb-3">
+                        En este bloque se encuentra caracterizado por tener alianzas independientes pero que comparten
+                        el discurso ideológico liberal-libertario.
+                      </p>
+                      <p className="text-sm mb-3">
+                        Se trata de precandidatos independientes pero que comparten el discurso ideológico
+                        liberal-libertario.
+                      </p>
+                      <h4 className="font-semibold text-sm mb-2">Los actores políticos son:</h4>
+                      <ul className="list-disc list-inside text-sm">
+                        <li>Branko Marinkovic</li>
+                        <li>Jaime Dunn</li>
+                        <li>José Carlos Sánchez Berzaín</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Bloque Evista */}
+                  <Card className="border-foreground/20 h-full">
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque Evista</h3>
+                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
+                        <div className="absolute inset-0 bg-green-600/20 flex items-center justify-center">
+                          <p className="text-green-800 font-semibold">(FPV)</p>
+                        </div>
+                      </div>
+                      <p className="text-sm mb-3">
+                        Este bloque está dirigido por Evo Morales quien a la fecha se encuentra inhabilitado en
+                        conformidad con el Auto Constitucional 0063/2024 emitido por Tribunal Constitucional cuando aún
+                        los magistrados de este tribunal no se encontraban auto prorrogados.
+                      </p>
+                      <h4 className="font-semibold text-sm mb-2">Los actores son:</h4>
+                      <ul className="list-disc list-inside text-sm">
+                        <li>Evo Morales</li>
+                        <li>Andrónico Rodríguez</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Bloque MAS-IPSP */}
+                  <Card className="border-foreground/20 h-full">
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque MAS-IPSP</h3>
+                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <p className="text-blue-800 font-semibold">Logo del MAS-IPSP</p>
+                        </div>
+                      </div>
+                      <p className="text-sm mb-3">
+                        Este bloque está encabezado por la directiva renovada del partido político MAS-IPSP y el
+                        presidente Luis Arce Catacora. Aún no se ha definido un binomio para las elecciones, pero seguro
+                        se va a participar. El actor político es:
+                      </p>
+                      <ul className="list-disc list-inside text-sm">
+                        <li>Luis Arce Catacora</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* Bloque Independiente */}
+                  <Card className="border-foreground/20 h-full">
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque Independiente</h3>
+                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <p className="text-gray-800 font-semibold">Manfred Reyes Villa y otros</p>
+                        </div>
+                      </div>
+                      <p className="text-sm mb-3">
+                        En este bloque no existen alianzas ni un horizonte ideológico en común. Existen varios actores y
+                        actoras pero muchos de ellos aún no han cobrado relevancia política. Los que más destacan son:
+                      </p>
+                      <ul className="list-disc list-inside text-sm">
+                        <li>Manfred Reyes Villa</li>
+                        <li>Chi Hyung Chung</li>
+                        <li>Rodrigo Paz</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <Button variant="outline" className="text-base">
+                Ver análisis completo
+              </Button>
+            </div>
+          </div>
+
           <div className="mt-16 text-center">
             <Button
               className="bg-gray-900 hover:bg-gray-950 text-white font-bold py-4 px-10 rounded-lg shadow-lg transform transition-transform hover:scale-105 text-xl"
@@ -205,6 +338,8 @@ export default function Home() {
               Únete a nuestra campaña para combatir las noticias falsas y la desinformación electoral
             </p>
           </div>
+
+          
         </div>
       </main>
       <Footer />
