@@ -227,7 +227,7 @@ export default function ContactPage() {
 
                     <div>
                       <h3 className="font-medium mb-2">Correo electrónico</h3>
-                      <p className="text-gray-600">info@chequeabolivia.org</p>
+                      <p className="text-gray-600">info@PresenteBolivia.org</p>
                     </div>
 
                     <div>

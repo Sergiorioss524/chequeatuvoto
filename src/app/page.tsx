@@ -1,11 +1,14 @@
 "use client"
 
-import { useState } from "react"
-import { Info } from "lucide-react"
+import type React from "react"
+
+import { useState, useEffect } from "react"
+import { Info, Users, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Navbar } from "./components/navbar"
 import { Footer } from "./components/footer"
+import Link from "next/link"
 
 const features = [
   {
@@ -55,7 +58,7 @@ const features = [
     name: "¿Las propuestas de los candidatos son realistas y están bien fundamentadas?",
     description: "Es importante saber si las propuestas son factibles y tienen fundamentos sólidos.",
     moreInfo:
-      "Es fundamental entender que nos están prometiendo, y más importante aún saber qué responden cuando alguien les pregunta el “cómo” lograrlo”. Muchas veces votar es una apuesta a ciegas, a veces dejamos al tink’azo votar pero es posible salir de la intuición intentando buscar el sentido lógico de la propuesta, es decir, qué si la posibilidad de lograr esas propuestas son reales.Es importante conocer sus propuestas para tener una idea general de cómo será el gobierno al menos en temas generales cómo:Trabajo y oportunidades, Salud, Educación, Justicia, Seguridad",
+      'Es fundamental entender que nos están prometiendo, y más importante aún saber qué responden cuando alguien les pregunta el "cómo" lograrlo". Muchas veces votar es una apuesta a ciegas, a veces dejamos al tink\'azo votar pero es posible salir de la intuición intentando buscar el sentido lógico de la propuesta, es decir, qué si la posibilidad de lograr esas propuestas son reales.Es importante conocer sus propuestas para tener una idea general de cómo será el gobierno al menos en temas generales cómo:Trabajo y oportunidades, Salud, Educación, Justicia, Seguridad',
     risks: [
       "Me informo de las propuestas solo en redes sociales y de solo contenido que me hace sentir cómodo o cómoda. ",
     ],
@@ -89,9 +92,50 @@ const timelineEvents = [
   },
 ]
 
+const bloques = [
+  {
+    name: "Bloque de Unidad Opositora",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yO4Gno13323yOVqAYAa1unTxKWak1h.png",
+    description:
+      "Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo de Presidente del Comité Cívico Pro Santa Cruz.",
+    actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar", "Tomás Monasterio"],
+  },
+  {
+    name: "Bloque Liberal-libertario",
+    image: null,
+    description:
+      "En este bloque se encuentra caracterizado por tener alianzas independientes pero que comparten el discurso ideológico liberal-libertario. Se trata de precandidatos independientes pero que comparten el discurso ideológico liberal-libertario.",
+    actores: ["Branko Marinkovic", "Jaime Dunn", "José Carlos Sánchez Berzaín"],
+  },
+  {
+    name: "Bloque Evista",
+    image: "fpv",
+    description:
+      "Este bloque está dirigido por Evo Morales quien a la fecha se encuentra inhabilitado en conformidad con el Auto Constitucional 0063/2024 emitido por Tribunal Constitucional cuando aún los magistrados de este tribunal no se encontraban auto prorrogados.",
+    actores: ["Evo Morales", "Andrónico Rodríguez"],
+  },
+  {
+    name: "Bloque MAS-IPSP",
+    image: "mas-ipsp",
+    description:
+      "Este bloque está encabezado por la directiva renovada del partido político MAS-IPSP y el presidente Luis Arce Catacora. Aún no se ha definido un binomio para las elecciones, pero seguro se va a participar.",
+    actores: ["Luis Arce Catacora"],
+  },
+  {
+    name: "Bloque Independiente",
+    image: "independiente",
+    description:
+      "En este bloque no existen alianzas ni un horizonte ideológico en común. Existen varios actores y actoras pero muchos de ellos aún no han cobrado relevancia política.",
+    actores: ["Manfred Reyes Villa", "Chi Hyung Chung", "Rodrigo Paz"],
+  },
+]
+
 export default function Home() {
   const [expandedFeature, setExpandedFeature] = useState<string | null>(null)
   const [expandedRisks, setExpandedRisks] = useState<string | null>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
 
   const toggleFeature = (name: string) => {
     setExpandedFeature(expandedFeature === name ? null : name)
@@ -100,6 +144,47 @@ export default function Home() {
   const toggleRisks = (name: string) => {
     setExpandedRisks(expandedRisks === name ? null : name)
   }
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === bloques.length - 1 ? 0 : prev + 1))
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? bloques.length - 1 : prev - 1))
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Swipe left
+      nextSlide()
+    }
+
+    if (touchStart - touchEnd < -50) {
+      // Swipe right
+      prevSlide()
+    }
+  }
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide()
+    }, 8000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <>
@@ -112,6 +197,24 @@ export default function Home() {
               Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar
               conscientemente y con información verificada.
             </p>
+
+            {/* Quick Links to About and Contact */}
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link href="/about">
+                <Button variant="outline" size="lg" className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-md"></div>
+                  <Users className="mr-2 h-5 w-5 transition-transform group-hover:scale-110 duration-300" />
+                  <span className="relative z-10">Quiénes Somos</span>
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline" size="lg" className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-md"></div>
+                  <MessageSquare className="mr-2 h-5 w-5 transition-transform group-hover:scale-110 duration-300" />
+                  <span className="relative z-10">Buzón de Sugerencias</span>
+                </Button>
+              </Link>
+            </div>
           </div>
 
           <div className="mt-16 space-y-8">
@@ -197,126 +300,107 @@ export default function Home() {
           <div id="bloques-preelectorales" className="mt-16 sm:mt-20">
             <h2 className="text-3xl font-bold mb-6 text-center font-round">BLOQUES PREELECTORALES</h2>
             <div className="mb-6 text-center max-w-3xl mx-auto">
-              <p className="text-base text-gray-600">
+              <p className="text-lg text-gray-600">
                 Aclaramos que no todos los actores políticos mencionados han confirmado su precandidatura o están
                 legalmente habilitados, sin embargo, este es un panorama general del escenario preelectoral hasta marzo
                 del 2025.
               </p>
             </div>
 
-            <div className="overflow-x-auto">
-              <div className="min-w-full">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                  {/* Bloque de Unidad Opositora */}
-                  <Card className="border-foreground/20 h-full">
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque de Unidad Opositora</h3>
-                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
-                        <img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yO4Gno13323yOVqAYAa1unTxKWak1h.png"
-                          alt="Bloque de Unidad Opositora"
-                          className="object-cover w-full h-full"
-                        />
-                      </div>
-                      <p className="text-sm mb-3">
-                        Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A
-                        excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo
-                        de Presidente del Comité Cívico Pro Santa Cruz.
-                      </p>
-                      <h4 className="font-semibold text-sm mb-2">Los actores políticos son:</h4>
-                      <ul className="list-disc list-inside text-sm">
-                        <li>Samuel Doria Medina</li>
-                        <li>Jorge Tuto Quiroga Ramírez</li>
-                        <li>Amparo Ballivián Cuellar</li>
-                        <li>Tomás Monasterio</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+            {/* Carousel */}
+            <div className="relative max-w-3xl mx-auto">
+              <div
+                className="overflow-hidden"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {bloques.map((bloque, index) => (
+                    <div key={index} className="w-full flex-shrink-0 px-4">
+                      <Card className="border-foreground/20 h-full shadow-lg hover:shadow-xl transition-shadow">
+                        <CardContent className="p-6">
+                          <h3 className="text-2xl font-semibold mb-4 text-center">{bloque.name}</h3>
 
-                  {/* Bloque Liberal-libertario */}
-                  <Card className="border-foreground/20 h-full">
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque Liberal-libertario</h3>
-                      <p className="text-sm mb-3">
-                        En este bloque se encuentra caracterizado por tener alianzas independientes pero que comparten
-                        el discurso ideológico liberal-libertario.
-                      </p>
-                      <p className="text-sm mb-3">
-                        Se trata de precandidatos independientes pero que comparten el discurso ideológico
-                        liberal-libertario.
-                      </p>
-                      <h4 className="font-semibold text-sm mb-2">Los actores políticos son:</h4>
-                      <ul className="list-disc list-inside text-sm">
-                        <li>Branko Marinkovic</li>
-                        <li>Jaime Dunn</li>
-                        <li>José Carlos Sánchez Berzaín</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                          <div className="aspect-video relative mb-4 bg-gray-100 rounded-md overflow-hidden">
+                            {bloque.image &&
+                            typeof bloque.image === "string" &&
+                            bloque.image !== "fpv" &&
+                            bloque.image !== "mas-ipsp" &&
+                            bloque.image !== "independiente" ? (
+                              <img
+                                src={bloque.image || "/placeholder.svg"}
+                                alt={bloque.name}
+                                className="object-cover w-full h-full"
+                              />
+                            ) : bloque.image === "fpv" ? (
+                              <div className="absolute inset-0 bg-green-600/20 flex items-center justify-center">
+                                <p className="text-green-800 font-semibold text-xl">(FPV)</p>
+                              </div>
+                            ) : bloque.image === "mas-ipsp" ? (
+                              <div className="absolute inset-0 flex items-center justify-center bg-blue-50">
+                                <p className="text-blue-800 font-semibold text-xl">Logo del MAS-IPSP</p>
+                              </div>
+                            ) : bloque.image === "independiente" ? (
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <p className="text-gray-800 font-semibold text-xl">Manfred Reyes Villa y otros</p>
+                              </div>
+                            ) : (
+                              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                                <p className="text-gray-600 font-semibold text-xl">{bloque.name}</p>
+                              </div>
+                            )}
+                          </div>
 
-                  {/* Bloque Evista */}
-                  <Card className="border-foreground/20 h-full">
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque Evista</h3>
-                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
-                        <div className="absolute inset-0 bg-green-600/20 flex items-center justify-center">
-                          <p className="text-green-800 font-semibold">(FPV)</p>
-                        </div>
-                      </div>
-                      <p className="text-sm mb-3">
-                        Este bloque está dirigido por Evo Morales quien a la fecha se encuentra inhabilitado en
-                        conformidad con el Auto Constitucional 0063/2024 emitido por Tribunal Constitucional cuando aún
-                        los magistrados de este tribunal no se encontraban auto prorrogados.
-                      </p>
-                      <h4 className="font-semibold text-sm mb-2">Los actores son:</h4>
-                      <ul className="list-disc list-inside text-sm">
-                        <li>Evo Morales</li>
-                        <li>Andrónico Rodríguez</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                          <p className="text-lg mb-4 text-gray-700">{bloque.description}</p>
 
-                  {/* Bloque MAS-IPSP */}
-                  <Card className="border-foreground/20 h-full">
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque MAS-IPSP</h3>
-                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <p className="text-blue-800 font-semibold">Logo del MAS-IPSP</p>
-                        </div>
-                      </div>
-                      <p className="text-sm mb-3">
-                        Este bloque está encabezado por la directiva renovada del partido político MAS-IPSP y el
-                        presidente Luis Arce Catacora. Aún no se ha definido un binomio para las elecciones, pero seguro
-                        se va a participar. El actor político es:
-                      </p>
-                      <ul className="list-disc list-inside text-sm">
-                        <li>Luis Arce Catacora</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  {/* Bloque Independiente */}
-                  <Card className="border-foreground/20 h-full">
-                    <CardContent className="p-4">
-                      <h3 className="text-lg font-semibold mb-3 text-center">Bloque Independiente</h3>
-                      <div className="aspect-video relative mb-3 bg-gray-100 rounded-md overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <p className="text-gray-800 font-semibold">Manfred Reyes Villa y otros</p>
-                        </div>
-                      </div>
-                      <p className="text-sm mb-3">
-                        En este bloque no existen alianzas ni un horizonte ideológico en común. Existen varios actores y
-                        actoras pero muchos de ellos aún no han cobrado relevancia política. Los que más destacan son:
-                      </p>
-                      <ul className="list-disc list-inside text-sm">
-                        <li>Manfred Reyes Villa</li>
-                        <li>Chi Hyung Chung</li>
-                        <li>Rodrigo Paz</li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                          <h4 className="font-semibold text-lg mb-2">Los actores políticos son:</h4>
+                          <ul className="list-disc list-inside text-lg">
+                            {bloque.actores.map((actor, idx) => (
+                              <li key={idx} className="mb-1">
+                                {actor}
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md z-10 transition-all hover:scale-110"
+                aria-label="Anterior bloque"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-md z-10 transition-all hover:scale-110"
+                aria-label="Siguiente bloque"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {bloques.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      currentSlide === index ? "bg-primary w-6" : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`Ir al bloque ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
@@ -338,8 +422,6 @@ export default function Home() {
               Únete a nuestra campaña para combatir las noticias falsas y la desinformación electoral
             </p>
           </div>
-
-          
         </div>
       </main>
       <Footer />

@@ -9,25 +9,49 @@ import { Navbar } from "../components/navbar"
 import { Footer } from "../components/footer"
 import { motion } from "framer-motion"
 
+// Custom TikTok icon since it's not in Lucide
+const TikTok = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-tiktok"
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+)
+
 const socialLinks = [
   {
     name: "La Aparicio (FOTO)",
+    image: "/placeholder.svg?height=150&width=250",
+    imageAlt: "La Aparicio",
     links: [
       { platform: "Instagram", url: "https://www.instagram.com/la.aparicioooo/", icon: Instagram },
-      { platform: "TikTok", url: "https://www.tiktok.com/@la.apariciooo", icon: ExternalLink },
+      { platform: "TikTok", url: "https://www.tiktok.com/@la.apariciooo", icon: TikTok },
       { platform: "Youtube", url: "https://www.youtube.com/@PresenteBolivia", icon: Youtube },
     ],
   },
   {
     name: "Presente Bolivia (LOGO)",
+    image: "/placeholder.svg?height=150&width=250",
+    imageAlt: "Presente Bolivia",
     links: [
       { platform: "Instagram", url: "https://www.instagram.com/presente.bo/", icon: Instagram },
-      { platform: "TikTok", url: "https://www.tiktok.com/@presente.bo", icon: ExternalLink },
+      { platform: "TikTok", url: "https://www.tiktok.com/@presente.bo", icon: TikTok },
       { platform: "Youtube", url: "https://www.youtube.com/@la.apariciooo", icon: Youtube },
     ],
   },
   {
     name: "Chequea Bolivia (LOGO)",
+    image: "/placeholder.svg?height=150&width=250",
+    imageAlt: "Chequea Bolivia",
     links: [
       { platform: "Instagram", url: "https://www.instagram.com/chequeabolivia/", icon: Instagram },
       { platform: "Facebook", url: "https://www.facebook.com/ChequeaBolivia", icon: Facebook },
@@ -256,37 +280,60 @@ export default function AboutPage() {
               transition={{ duration: 0.3 }}
               className="space-y-6"
             >
-              <h2 className="text-2xl font-semibold mb-4">Contactos:</h2>
-              <h3 className="text-xl font-medium mb-2">Redes sociales:</h3>
+              <h2 className="text-2xl font-semibold mb-6">Contactos:</h2>
 
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {socialLinks.map((org, index) => (
                   <motion.div
                     key={org.name}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="border p-4 rounded-lg hover:shadow-md transition-shadow"
                   >
-                    <h4 className="font-medium text-lg mb-3">{org.name}</h4>
-                    <div className="space-y-2">
-                      {org.links.map((link) => {
-                        const Icon = link.icon
-                        return (
-                          <a
-                            key={link.url}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center p-2 -mx-2 rounded-md hover:bg-gray-100 transition-colors"
-                          >
-                            <Icon className="h-5 w-5 mr-2 text-gray-600" />
-                            <span className="mr-2">{link.platform}:</span>
-                            <span className="text-blue-600 hover:underline truncate">{link.url}</span>
-                          </a>
-                        )
-                      })}
-                    </div>
+                    <Card className="overflow-hidden">
+                      <CardContent className="p-0">
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          {/* Left side - Organization and social icons */}
+                          <div className="p-6">
+                            <h3 className="text-xl font-semibold mb-4">{org.name}</h3>
+                            <div className="flex flex-wrap gap-3 mb-4">
+                              {org.links.map((link) => {
+                                const Icon = link.icon
+                                return (
+                                  <a
+                                    key={link.url}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center hover:bg-primary/10 transition-colors group"
+                                    title={`${org.name} - ${link.platform}`}
+                                  >
+                                    <Icon className="h-6 w-6 text-gray-600 group-hover:text-primary group-hover:scale-110 transition-transform" />
+                                  </a>
+                                )
+                              })}
+                            </div>
+                            <p className="text-gray-600 text-sm">
+                              Síguenos en nuestras redes sociales para estar al día con la información electoral.
+                            </p>
+                          </div>
+
+                          {/* Right side - Image */}
+                          <div className="bg-gray-100 h-full min-h-[180px] relative">
+                            <img
+                              src={org.image || "/placeholder.svg"}
+                              alt={org.imageAlt}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end">
+                              <div className="p-4 text-white">
+                                <p className="font-medium">{org.name}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </motion.div>
                 ))}
               </div>
