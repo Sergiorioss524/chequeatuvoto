@@ -115,20 +115,6 @@ export default function AboutPage() {
             </button>
             <button
               className={`px-4 py-2 font-medium text-sm transition-colors relative ${
-                activeTab === "team" ? "text-primary" : "text-gray-500 hover:text-gray-700"
-              }`}
-              onClick={() => setActiveTab("team")}
-            >
-              Nuestro Equipo
-              {activeTab === "team" && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                ></motion.div>
-              )}
-            </button>
-            <button
-              className={`px-4 py-2 font-medium text-sm transition-colors relative ${
                 activeTab === "contact" ? "text-primary" : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("contact")}
@@ -211,68 +197,7 @@ export default function AboutPage() {
             </motion.div>
           )}
 
-          {activeTab === "team" && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-6"
-            >
-              <p className="text-center text-lg mb-8">
-                Nuestro equipo está formado por profesionales comprometidos con la democracia y la transparencia
-                electoral. Trabajamos de manera voluntaria para brindar información verificada y de calidad.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <Card className="overflow-hidden group">
-                  <div className="h-48 bg-gray-100 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
-                      <p className="text-sm">Coordinador de Verificación de Datos</p>
-                    </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold">Carlos Mendoza</h3>
-                    <p className="text-sm text-gray-500">Periodista e Investigador</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="overflow-hidden group">
-                  <div className="h-48 bg-gray-100 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
-                      <p className="text-sm">Directora de Comunicación</p>
-                    </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold">Ana Flores</h3>
-                    <p className="text-sm text-gray-500">Comunicadora Social</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="overflow-hidden group">
-                  <div className="h-48 bg-gray-100 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform">
-                      <p className="text-sm">Analista Político</p>
-                    </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold">Roberto Guzmán</h3>
-                    <p className="text-sm text-gray-500">Politólogo</p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="text-center mt-8">
-                <Button variant="outline" className="group">
-                  <span>Conoce a todo el equipo</span>
-                  <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </div>
-            </motion.div>
-          )}
-
+        
           {activeTab === "contact" && (
             <motion.div
               initial={{ opacity: 0 }}

@@ -227,13 +227,11 @@ export default function ContactPage() {
 
                     <div>
                       <h3 className="font-medium mb-2">Correo electrónico</h3>
-                      <p className="text-gray-600">info@PresenteBolivia.org</p>
+                      <p className="text-gray-600">presente.bolivia@gmail.com
+                      </p>
+                      <p className="text-gray-600">natiaparicioj@gmail.com</p>
                     </div>
 
-                    <div>
-                      <h3 className="font-medium mb-2">Horario de atención</h3>
-                      <p className="text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
-                    </div>
                   </div>
 
                   <div className="mt-8">

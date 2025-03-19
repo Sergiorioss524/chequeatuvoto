@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react"
 
 const navItems = [
   { name: "Features", href: "#features" },
-  { name: "Timeline", href: "#timeline" },
-  { name: "Parties", href: "#parties" },
-  { name: "Contact", href: "/contact" },
-  { name: "About", href: "/about" },
+  { name: "Calendario Electoral", href: "#timeline" },
+  { name: "Partidos", href: "#parties" },
+  { name: "Buzon de Sugerencias", href: "/contact" },
+  { name: "Quienes somos", href: "/about" },
 ]
 
 export function Navbar() {
