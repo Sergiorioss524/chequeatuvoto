@@ -126,7 +126,7 @@ const bloques = [
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yO4Gno13323yOVqAYAa1unTxKWak1h.png",
     description:
       "Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo de Presidente del Comité Cívico Pro Santa Cruz.",
-    actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar", "Tomás Monasterio"],
+    actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar",],
     color: "bg-blue-50",
     icon: Building,
     tags: ["Oposición", "Centro-derecha", "Alianza"],
@@ -225,11 +225,22 @@ export default function Home() {
       <main className="py-16 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto">
           <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl font-bold font-round">TE AYUDAMOS A INFORMARTE ANTES DE VOTAR</h1>
-            <p className="mt-4 text-lg sm:text-xl text-gray-600 font-round">
-              Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar
-              conscientemente y con información verificada.
-            </p>
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 py-4">
+            <div className="md:w-2/5 lg:w-1/3 flex justify-center">
+              <img
+                src="/images/logo.jpg"
+                alt="Chequea Tu Voto"
+                className="w-full max-w-[280px] h-auto object-contain"
+              />
+            </div>
+            <div className="md:w-3/5 lg:w-2/3 text-center md:text-left">
+              <h1 className="text-3xl sm:text-4xl font-bold font-round">TE AYUDAMOS A INFORMARTE ANTES DE VOTAR</h1>
+              <p className="mt-4 text-lg sm:text-xl text-gray-600 font-round">
+                Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar
+                conscientemente y con información verificada.
+              </p>
+            </div>
+          </div>
 
             <div className="mt-16 space-y-10">
               {features.map((feature) => (
@@ -510,13 +521,6 @@ export default function Home() {
                                   </li>
                                 ))}
                               </ul>
-
-                              <div className="mt-6 flex justify-end">
-                                <Button variant="outline" className="mr-2">
-                                  Historial político
-                                </Button>
-                                <Button>Ver detalles completos</Button>
-                              </div>
                             </div>
                           </div>
                         </div>
