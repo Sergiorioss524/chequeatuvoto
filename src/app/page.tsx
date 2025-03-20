@@ -124,7 +124,7 @@ const bloques = [
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yO4Gno13323yOVqAYAa1unTxKWak1h.png",
     description:
       "Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo de Presidente del Comité Cívico Pro Santa Cruz.",
-    actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar",],
+    actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar"],
     color: "bg-blue-50",
     icon: Building,
     tags: ["Oposición", "Centro-derecha", "Alianza"],
@@ -222,22 +222,22 @@ export default function Home() {
       <main className="py-16 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto">
           <div className="text-center">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 py-4">
-            <div className="md:w-2/5 lg:w-1/3 flex justify-center">
-              <img
-                src="/images/logo.jpg"
-                alt="Chequea Tu Voto"
-                className="w-full max-w-[280px] h-auto object-contain"
-              />
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 py-4">
+              <div className="md:w-2/5 lg:w-1/3 flex justify-center">
+                <img
+                  src="/images/logo.jpg"
+                  alt="Chequea Tu Voto"
+                  className="w-full max-w-[280px] h-auto object-contain"
+                />
+              </div>
+              <div className="md:w-3/5 lg:w-2/3 text-center md:text-left">
+                <h1 className="text-3xl sm:text-4xl font-bold font-round">TE AYUDAMOS A INFORMARTE ANTES DE VOTAR</h1>
+                <p className="mt-4 text-lg sm:text-xl text-gray-600 font-round">
+                  Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar
+                  conscientemente y con información verificada.
+                </p>
+              </div>
             </div>
-            <div className="md:w-3/5 lg:w-2/3 text-center md:text-left">
-              <h1 className="text-3xl sm:text-4xl font-bold font-round">TE AYUDAMOS A INFORMARTE ANTES DE VOTAR</h1>
-              <p className="mt-4 text-lg sm:text-xl text-gray-600 font-round">
-                Bienvenidos y bienvenidas a este espacio apartidista donde te brindamos una guía para votar
-                conscientemente y con información verificada.
-              </p>
-            </div>
-          </div>
 
             <div className="mt-16 space-y-10">
               {features.map((feature) => (
@@ -269,55 +269,81 @@ export default function Home() {
                         <Button
                           variant="ghost"
                           size="lg"
-                          className="text-lg font-medium px-6"
+                          className={`text-lg font-medium px-6 transition-all duration-300 ${
+                            expandedFeature === feature.name ? "bg-primary/20 ring-2 ring-primary/50" : ""
+                          }`}
                           onClick={() => toggleFeature(feature.name)}
                         >
-                          {expandedFeature === feature.name ? "Menos Info" : "Más Info"}
+                          {expandedFeature === feature.name ? (
+                            <>
+                              <span className="mr-2">Menos Info</span>
+                              <ChevronUp className="h-5 w-5" />
+                            </>
+                          ) : (
+                            <>
+                              <span className="mr-2">Más Info</span>
+                              <ChevronDown className="h-5 w-5" />
+                            </>
+                          )}
                         </Button>
                         <Button
                           variant="destructive"
                           size="lg"
-                          className="text-lg font-medium px-6"
+                          className={`text-lg font-medium px-6 transition-all duration-300 ${
+                            expandedRisks === feature.name ? "ring-2 ring-red-500/50 animate-pulse-slow" : ""
+                          }`}
                           onClick={() => toggleRisks(feature.name)}
                         >
-                          Redflags
+                          {expandedRisks === feature.name ? (
+                            <>
+                              <span className="mr-2">Ocultar Redflags</span>
+                              <ChevronUp className="h-5 w-5" />
+                            </>
+                          ) : (
+                            <>
+                              <span className="mr-2">Redflags</span>
+                              <ChevronDown className="h-5 w-5" />
+                            </>
+                          )}
                         </Button>
                       </div>
                     </div>
                   </div>
 
                   {expandedFeature === feature.name && (
-                    <div className="mt-6 text-lg text-gray-800 border-t pt-6 text-left">{feature.moreInfo}</div>
+                    <div className="mt-6 text-lg text-gray-800 border-t pt-6 text-left animate-fadeIn">
+                      {feature.moreInfo}
+                    </div>
                   )}
 
                   {/* Display Risks */}
                   {expandedRisks === feature.name && (
-  <div className="mt-6 flex flex-col md:flex-row gap-6 md:space-x-8 border-t pt-6">
-    {/* My Redflags Column */}
-    <div className="flex-1 text-left"> {/* Added text-left */}
-      <h4 className="font-semibold text-red-700 text-xl mb-3">Mis Redflags</h4>
-      <ul className="mt-2 list-disc text-red-700 bg-red-50 p-4 rounded-lg text-lg space-y-2">
-        {feature.risks.map((risk, index) => (
-          <li key={index} className="ml-4 pl-2 text-left"> {/* Added text-left */}
-            {risk}
-          </li>
-        ))}
-      </ul>
-    </div>
+                    <div className="mt-6 flex flex-col md:flex-row gap-6 md:space-x-8 border-t pt-6 animate-fadeIn">
+                      {/* My Redflags Column */}
+                      <div className="flex-1 text-left animate-pulse-subtle">
+                        <h4 className="font-semibold text-red-700 text-xl mb-3">Mis Redflags</h4>
+                        <ul className="mt-2 list-disc text-red-700 bg-red-50 p-4 rounded-lg text-lg space-y-2">
+                          {feature.risks.map((risk, index) => (
+                            <li key={index} className="ml-4 pl-2 text-left">
+                              {risk}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-    {/* Their Redflags Column */}
-    <div className="flex-1 text-left"> {/* Added text-left */}
-      <h4 className="font-semibold text-red-700 text-xl mb-3">Redflags</h4>
-      <ul className="mt-2 list-disc text-red-700 bg-red-50 p-4 rounded-lg text-lg space-y-2">
-        {feature.myrisk.map((myrisk, index) => (
-          <li key={index} className="ml-4 pl-2 text-left"> {/* Added text-left */}
-            {myrisk}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-)}
+                      {/* Their Redflags Column */}
+                      <div className="flex-1 text-left animate-pulse-subtle">
+                        <h4 className="font-semibold text-red-700 text-xl mb-3">Redflags</h4>
+                        <ul className="mt-2 list-disc text-red-700 bg-red-50 p-4 rounded-lg text-lg space-y-2">
+                          {feature.myrisk.map((myrisk, index) => (
+                            <li key={index} className="ml-4 pl-2 text-left">
+                              {myrisk}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
