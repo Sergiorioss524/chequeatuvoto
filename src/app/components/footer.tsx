@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FaLocationDot, FaCheck } from "react-icons/fa6"; // Location Icon
-import { FaXTwitter, FaDiscord, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6"; // Social Icons
+import {FaCheck } from "react-icons/fa6"; // Location Icon
+import { FaXTwitter,FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6"; // Social Icons
 
 const footerLinks = [
   { name: "Quienes somos", href: "/about" },
