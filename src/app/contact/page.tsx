@@ -228,37 +228,6 @@ export default function ContactPage() {
                       </p>
                       <p className="text-gray-600">natiaparicioj@gmail.com</p>
                     </div>
-
-                  </div>
-
-                  <div className="mt-8">
-                    <h3 className="font-medium mb-3">Síguenos en redes sociales</h3>
-                    <div className="flex space-x-4">
-                      <a
-                        href="https://www.facebook.com/ChequeaBolivia"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
-                      >
-                        <Facebook className="h-5 w-5 text-gray-600" />
-                      </a>
-                      <a
-                        href="https://www.instagram.com/chequeabolivia/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
-                      >
-                        <Instagram className="h-5 w-5 text-gray-600" />
-                      </a>
-                      <a
-                        href="https://www.youtube.com/@PresenteBolivia"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
-                      >
-                        <Youtube className="h-5 w-5 text-gray-600" />
-                      </a>
-                    </div>
                   </div>
                 </CardContent>
               </Card>

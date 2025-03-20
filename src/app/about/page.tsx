@@ -60,6 +60,7 @@ const socialLinks = [
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState("about")
   const [scrollY, setScrollY] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,6 +69,20 @@ export default function AboutPage() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    // Set initial width
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   return (
@@ -156,8 +171,8 @@ export default function AboutPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div
                   style={{
-                    y: scrollY * 0.1,
-                    rotate: scrollY * 0.02,
+                    y: typeof window !== "undefined" ? (window.innerWidth > 768 ? scrollY * 0.1 : scrollY * 0.03) : 0,
+                    rotate: typeof window !== "undefined" ? (window.innerWidth > 768 ? scrollY * 0.02 : 0) : 0,
                   }}
                 >
                   <Card className="h-full transform transition-transform hover:scale-105 hover:shadow-lg">
@@ -173,11 +188,11 @@ export default function AboutPage() {
 
                 <motion.div
                   style={{
-                    y: scrollY * -0.1,
-                    rotate: scrollY * -0.02,
+                    y: typeof window !== "undefined" ? (window.innerWidth > 768 ? scrollY * -0.1 : scrollY * -0.03) : 0,
+                    rotate: typeof window !== "undefined" ? (window.innerWidth > 768 ? scrollY * -0.02 : 0) : 0,
                   }}
                 >
-                  <Card className="h-full transform transition-transform hover:scale-105 hover:shadow-lg">
+                  <Card className="h-full transform transition-transform hover:scale-105 hover:shadow-lg mt-8 md:mt-0 sm:mt-10">
                     <CardContent className="p-6">
                       <h3 className="text-xl font-semibold mb-3">Nuestros Valores</h3>
                       <ul className="list-disc list-inside space-y-1">
@@ -194,7 +209,6 @@ export default function AboutPage() {
             </motion.div>
           )}
 
-        
           {activeTab === "contact" && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -276,3 +290,7 @@ export default function AboutPage() {
   )
 }
 
+AboutPage.meta = {
+  title: "Quiénes Somos - Chequea Tu Voto",
+  description: "Conoce más sobre nuestra iniciativa apartidista para informar a la ciudadanía.",
+}
