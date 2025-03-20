@@ -25,7 +25,7 @@ export function Footer() {
           {/* Location */}
           <div className="flex items-center gap-2 text-gray-700 text-sm">
             <FaCheck className="text-lg text-gray-600" />
-            <span className="font-extrabold font-round">CHEQUEA TU VOTO</span>
+            <span className="font-extrabold font-round text-2xl sm:text-xl">CHEQUEA TU VOTO</span>
           </div>
 
           {/* Navigation Links */}

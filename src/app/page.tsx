@@ -287,37 +287,37 @@ export default function Home() {
                   </div>
 
                   {expandedFeature === feature.name && (
-                    <div className="mt-6 text-lg text-gray-800 border-t pt-6">{feature.moreInfo}</div>
+                    <div className="mt-6 text-lg text-gray-800 border-t pt-6 text-left">{feature.moreInfo}</div>
                   )}
 
                   {/* Display Risks */}
                   {expandedRisks === feature.name && (
-                    <div className="mt-6 flex flex-col md:flex-row gap-6 md:space-x-8 border-t pt-6">
-                      {/* My Redflags Column */}
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-red-700 text-xl mb-3">Mis Redflags</h4>
-                        <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-4 rounded-lg text-lg">
-                          {feature.risks.map((risk, index) => (
-                            <li key={index} className="mb-2">
-                              {risk}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+  <div className="mt-6 flex flex-col md:flex-row gap-6 md:space-x-8 border-t pt-6">
+    {/* My Redflags Column */}
+    <div className="flex-1 text-left"> {/* Added text-left */}
+      <h4 className="font-semibold text-red-700 text-xl mb-3">Mis Redflags</h4>
+      <ul className="mt-2 list-disc text-red-700 bg-red-50 p-4 rounded-lg text-lg space-y-2">
+        {feature.risks.map((risk, index) => (
+          <li key={index} className="ml-4 pl-2 text-left"> {/* Added text-left */}
+            {risk}
+          </li>
+        ))}
+      </ul>
+    </div>
 
-                      {/* Their Redflags Column */}
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-red-700 text-xl mb-3">Redflags</h4>
-                        <ul className="mt-2 list-disc list-inside text-red-700 bg-red-50 p-4 rounded-lg text-lg">
-                          {feature.myrisk.map((myrisk, index) => (
-                            <li key={index} className="mb-2">
-                              {myrisk}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
+    {/* Their Redflags Column */}
+    <div className="flex-1 text-left"> {/* Added text-left */}
+      <h4 className="font-semibold text-red-700 text-xl mb-3">Redflags</h4>
+      <ul className="mt-2 list-disc text-red-700 bg-red-50 p-4 rounded-lg text-lg space-y-2">
+        {feature.myrisk.map((myrisk, index) => (
+          <li key={index} className="ml-4 pl-2 text-left"> {/* Added text-left */}
+            {myrisk}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
                 </div>
               ))}
             </div>
