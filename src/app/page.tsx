@@ -599,7 +599,7 @@ export default function Home() {
             >
               Lucha contra la desinformación
             </Button>
-            <p className="mt-3 text-base text-gray-600">
+            <p className="mt-6 text-base text-gray-600">
               Únete a nuestra campaña para combatir las noticias falsas y la desinformación electoral
             </p>
           </div>
