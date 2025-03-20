@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {FaCheck } from "react-icons/fa6"; // Location Icon
-import { FaXTwitter,FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6"; // Social Icons
+import { FaTwitter,FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa"; // Social Icons
 
 const footerLinks = [
   { name: "Quienes somos", href: "/about" },
@@ -10,7 +10,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: FaXTwitter, href: "https://twitter.com" },
+  { icon: FaTwitter, href: "https://twitter.com" },
   { icon: FaYoutube, href: "https://discord.com" },
   { icon: FaInstagram, href: "https://instagram.com" },
   { icon: FaTiktok, href: "https://tiktok.com" },
