@@ -20,8 +20,6 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Navbar } from "./components/navbar"
-import { Footer } from "./components/footer"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 
@@ -221,7 +219,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <main className="py-16 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto">
           <div className="text-center">
@@ -582,7 +579,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

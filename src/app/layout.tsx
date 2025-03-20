@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Lato, Baloo_2 } from "next/font/google"; 
+import { Lato, Baloo_2 } from "next/font/google";
 import "./globals.css";
+import { Footer } from "./components/footer"; // Ensure correct import path
+import { Navbar } from "./components/navbar"; // Ensure correct import path
 
 const lato = Lato({
   variable: "--font-primary",
@@ -16,7 +18,7 @@ const baloo = Baloo_2({
 
 export const metadata: Metadata = {
   title: "Chequea tu voto",
-  description: "Pagina dedicada ayudar a la población boliviana a verificar su voto",
+  description: "Página dedicada a ayudar a la población boliviana a verificar su voto",
 };
 
 export default function RootLayout({
@@ -27,7 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.variable} ${baloo.variable} antialiased`}>
-        {children}
+        <div className="flex flex-col min-h-screen">
+          <Navbar /> 
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
