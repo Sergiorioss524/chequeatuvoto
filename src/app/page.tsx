@@ -280,7 +280,7 @@ export default function Home() {
                           className="text-lg font-medium px-6"
                           onClick={() => toggleRisks(feature.name)}
                         >
-                          Redflags del OEP
+                          Redflags
                         </Button>
                       </div>
                     </div>

@@ -5,8 +5,6 @@ import Link from "next/link"
 import { ArrowLeft, Instagram, Facebook, Youtube, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Navbar } from "../components/navbar"
-import { Footer } from "../components/footer"
 import { motion } from "framer-motion"
 
 // Custom TikTok icon since it's not in Lucide
@@ -74,7 +72,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <Navbar />
       <main className="py-16 px-4 sm:px-8 min-h-screen">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
@@ -275,7 +272,6 @@ export default function AboutPage() {
           )}
         </div>
       </main>
-      <Footer />
     </>
   )
 }

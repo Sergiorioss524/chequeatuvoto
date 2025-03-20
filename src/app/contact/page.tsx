@@ -7,8 +7,6 @@ import Link from "next/link"
 import { ArrowLeft, Send, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Navbar } from "../components/navbar"
-import { Footer } from "../components/footer"
 import { motion, AnimatePresence } from "framer-motion"
 import { Facebook, Instagram, Youtube } from "lucide-react"
 
@@ -53,7 +51,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
       <main className="py-16 px-4 sm:px-8 min-h-screen bg-gradient-to-b from-background to-gray-50/50">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
@@ -269,7 +266,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }
