@@ -8,7 +8,6 @@ import { ArrowLeft, Send, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion, AnimatePresence } from "framer-motion"
-import { Facebook, Instagram, Youtube } from "lucide-react"
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
