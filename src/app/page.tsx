@@ -545,10 +545,10 @@ export default function Home() {
 
           <div id="parties" className="mt-16 sm:mt-20">
             <h2 className="text-3xl font-bold mb-6 text-center font-round"> CANDIDATOS</h2>
-            <h3 className="text-2xl  mb-6 text-center">
+            <h3 className="text-xl  mb-6 text-center">
               Este espacio se llenará a medida que se oficialicen los candidatos y candidatas.
             </h3>
-            <h3 className="text-2xl mb-6 text-center">
+            <h3 className="text-xl mb-6 text-center">
               Aquí encontrarás información sobre procesos penales, denuncias contra ellos y ellas, y su recorrido
               político en general.
             </h3>
@@ -558,10 +558,10 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-6 text-center font-round">
               PARTIDOS POLÍTICOS, AGRUPACIONES CIUDADANAS Y ORGANIZACIONES DE NACIONES Y PUEBLOS IOC
             </h2>
-            <h3 className="text-2xl mb-6 text-center">
+            <h3 className="text-xl mb-6 text-center">
               Este espacio se llenará a medida que se oficialicen las candidaturas.
             </h3>
-            <h3 className="text-2xl  mb-6 text-center">
+            <h3 className="text-xl  mb-6 text-center">
               Aquí encontrarás información sistematizada sobre sus propuestas de gobierno.
             </h3>
           </div>

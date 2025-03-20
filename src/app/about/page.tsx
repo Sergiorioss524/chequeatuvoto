@@ -60,7 +60,6 @@ const socialLinks = [
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState("about")
   const [scrollY, setScrollY] = useState(0)
-  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,20 +68,6 @@ export default function AboutPage() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-
-    // Set initial width
-    if (typeof window !== "undefined") {
-      setWindowWidth(window.innerWidth)
-    }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   return (
