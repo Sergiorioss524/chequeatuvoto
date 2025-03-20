@@ -18,7 +18,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-gray-100 border-t border-gray-300 py-6">
+    <footer className="bg-white border-t border-gray-300 py-6">
       <div className="max-w-screen-lg mx-auto flex flex-col gap-4 px-4">
         {/* First Row: Location & Links */}
         <div className="flex flex-col sm:flex-row justify-between items-center w-full">

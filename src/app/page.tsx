@@ -29,7 +29,7 @@ const features = [
     description:
       "Este 2025 elegiremos al Presidente, Vicepresidente y representantes de la Asamblea Legislativa Plurinacional.",
     moreInfo:
-      "Este 2025, además de elegir al próximo Presidente y Vicepresidente del país, elegiremos a los representantes de la Asamblea Legislativa Plurinacional. Ellos básicamente se encargan de aprobar, proponer y crear leyes. En total elegiremos 130 diputados y diputadas y 36 senadores y senadoras, las y los candidatos varían según tu departamento y tu provincia.\n\n Elegiremos a la gente que dirigirá el destino de cada uno de nosotros durante 5 años porque de las decisiones políticas dependen nuestros ingresos económicos, nuestra salud, nuestra educación, nuestra seguridad y mucho más. \n\n Estas elecciones son delicadas porque vivimos una crisis política, económica y ambiental que se acentúa mes a mes, y que la sentimos todos.",
+      "Este 2025, además de elegir al próximo Presidente y Vicepresidente del país, elegiremos a los representantes de la Asamblea Legislativa Plurinacional. Ellos básicamente se encargan de aprobar, proponer y crear leyes. En total elegiremos 130 diputados y diputadas y 36 senadores y senadoras, las y los candidatos varían según tu departamento y tu provincia. Elegiremos a la gente que dirigirá el destino de cada uno de nosotros durante 5 años.  De las decisiones políticas dependen nuestros ingresos económicos, nuestra salud, nuestra educación, nuestra seguridad, la justicia y más",
     risks: [
       "Pienso que la política no me afecta y por eso no es importante informarse.",
       "Voto porque es obligatorio y para poder hacer transacciones bancarias.",
@@ -45,7 +45,7 @@ const features = [
     name: "¿Conozco a TODOS los binomios presidenciales? ¿Conozco sus historiales políticos?",
     description: "Es imprescindible conocer a todos los candidatos y sus historiales políticos.",
     moreInfo:
-      "Es imprescindible conocer a todos los candidatos y sus historiales políticos. Muchos de ellos tienen un pasado que no necesariamente los define actualmente, sin embargo, si nos puede dar ciertas luces del comportamiento político de los candidatos. Algunos han pasado de partido en partido según su conveniencia o interés, otros han sido procesados por corrupción, otros han creado grandes fortunas a través de ilícitos. Saber esta información nos puede ayudar a tener una idea de si lo que prometen tiene coherencia con lo que hacen, hicieron o harán.",
+      "Es imprescindible conocer a todos los candidatos y candidatas, especialmente sus historiales políticos. Muchos de ellos tienen un pasado que no necesariamente los define actualmente, sin embargo, si nos puede dar ciertas luces del comportamiento político. Algunos han pasado de partido en partido según su conveniencia o interés, otros han sido procesados o están siendo procesados penalmente, otros han creado grandes fortunas a través de ilícitos. Saber esta información nos puede ayudar a tener una idea de si lo que prometen tiene coherencia con lo que hacen, hicieron o harán y su discurso de cara a la gente.",
 
     risks: [
       "Solo conozco a uno o algunos candidatos.",
@@ -64,9 +64,9 @@ const features = [
   {
     name: "¿Conozco a los candidatos a parlamentarios que representarán mi departamento y provincia?",
     moreInfo:
-      "Los parlamentarios que son los miembros de la Asamblea Legislativa Plurinacional, o sea diputados y senadores son usualmente líderes más o menos cercanos a nosotros. Es fundamental intentar indagar en su historial político, informarse no solo con propaganda hecha por ellos mismos. ",
+      "Los parlamentarios que son los miembros de la Asamblea Legislativa Plurinacional, o sea diputados y senadores son usualmente líderes más o menos cercanos a nosotros. Es fundamental intentar indagar en su historial político, informarse no solo con propaganda creada por ellos mismos. ",
     description: "Es clave investigar sus antecedentes y evitar votar solo por propaganda.",
-    risks: ["No sé quién es mi representante."],
+    risks: ["No saber quien es el representante parlamentario de mi circunscripcion."],
     myrisk: [
       "Nunca se involucró en temas políticos o sociales antes en tu localidad, ciudad o región y da la impresión que está buscando solo una pega o trabajo.",
       "Cuando hablan en prensa o cualquier otro medio solo repiten el mismo discurso que el Presidente o Vicepresidente de su partido o alianza política. ",
@@ -280,7 +280,7 @@ export default function Home() {
                           className="text-lg font-medium px-6"
                           onClick={() => toggleRisks(feature.name)}
                         >
-                          Red Flag
+                          Redflags del OEP
                         </Button>
                       </div>
                     </div>
