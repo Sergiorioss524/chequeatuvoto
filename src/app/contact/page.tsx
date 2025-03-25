@@ -67,7 +67,7 @@ export default function ContactPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl font-bold mb-4 font-round">Buzón de Sugerencias</h1>
+            <h1 className="text-4xl font-bold mb-4 font-round">BUZON DE SUGERENCIAS</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Tu opinión es importante para nosotros. Déjanos tus comentarios, sugerencias o preguntas y te
               responderemos a la brevedad.

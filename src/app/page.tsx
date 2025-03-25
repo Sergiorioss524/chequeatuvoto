@@ -38,7 +38,7 @@ const features = [
     ],
     myrisk: ["El OEP no brinda información digerible ni en medios de comunicación abiertos."],
     icon: Vote,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/imagenes2/IMAGENES PAGINA WEB/mesa_de_trabajo1.png",
     color: "bg-blue-50",
   },
   {
@@ -58,7 +58,7 @@ const features = [
       "Algún miembro del binomio ha cambiado de partido o postura de manera oportunista durante su carrera política.",
     ],
     icon: History,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/imagenes2/IMAGENES PAGINA WEB/Mesa de trabajo 1-2.png",
     color: "bg-amber-50",
   },
   {
@@ -73,7 +73,7 @@ const features = [
       "Solo existe información suya en forma de propaganda política.",
     ],
     icon: UserCheck,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/imagenes2/IMAGENES PAGINA WEB/Mesa de trabajo 1-3.png",
     color: "bg-green-50",
   },
   {
@@ -90,7 +90,7 @@ const features = [
       "Su discurso está basado principalmente en el ataque a otro candidato, partido, ideología o gestión gubernamental.",
     ],
     icon: FileCheck,
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/imagenes2/IMAGENES PAGINA WEB/Mesa de trabajo 1-4.png",
     color: "bg-purple-50",
   },
 ]
@@ -121,55 +121,55 @@ const bloques = [
   {
     id: "unidad-opositora",
     name: "Bloque de Unidad Opositora",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yO4Gno13323yOVqAYAa1unTxKWak1h.png",
+    image: "/imagenes2/IMAGENES PAGINA WEB/bloque_unidad_opositora.jpg",
     description:
       "Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo de Presidente del Comité Cívico Pro Santa Cruz.",
     actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar"],
-    color: "bg-blue-50",
+    color: "bg-purple-100",
     icon: Building,
     tags: ["Oposición", "Centro-derecha", "Alianza"],
   },
   {
     id: "liberal-libertario",
     name: "Bloque Liberal-libertario",
-    image: null,
+    image: "/imagenes2/IMAGENES PAGINA WEB/Branko.png",
     description:
       "En este bloque se encuentra caracterizado por tener alianzas independientes pero que comparten el discurso ideológico liberal-libertario. Se trata de precandidatos independientes pero que comparten el discurso ideológico liberal-libertario.",
     actores: ["Branko Marinkovic", "Jaime Dunn", "José Carlos Sánchez Berzaín"],
-    color: "bg-amber-50",
+    color: "bg-amber-100",
     icon: Award,
     tags: ["Liberal", "Libertario", "Independiente"],
   },
   {
     id: "evista",
     name: "Bloque Evista",
-    image: "fpv",
+    image: "/imagenes2/IMAGENES PAGINA WEB/Mas.png",
     description:
       "Este bloque está dirigido por Evo Morales quien a la fecha se encuentra inhabilitado en conformidad con el Auto Constitucional 0063/2024 emitido por Tribunal Constitucional cuando aún los magistrados de este tribunal no se encontraban auto prorrogados.",
     actores: ["Evo Morales", "Andrónico Rodríguez"],
-    color: "bg-green-50",
+    color: "bg-purple-100",
     icon: Flag,
     tags: ["Izquierda", "Indigenista", "MAS"],
   },
   {
     id: "mas-ipsp",
     name: "Bloque MAS-IPSP",
-    image: "mas-ipsp",
+    image: "/imagenes2/IMAGENES PAGINA WEB/mas ipsp.webp",
     description:
       "Este bloque está encabezado por la directiva renovada del partido político MAS-IPSP y el presidente Luis Arce Catacora. Aún no se ha definido un binomio para las elecciones, pero seguro se va a participar.",
     actores: ["Luis Arce Catacora"],
-    color: "bg-purple-50",
+    color: "bg-blue-100",
     icon: Flag,
     tags: ["Oficialismo", "Izquierda", "MAS"],
   },
   {
     id: "independiente",
     name: "Bloque Independiente",
-    image: "independiente",
+    image: "/imagenes2/IMAGENES PAGINA WEB/manfred.png",
     description:
       "En este bloque no existen alianzas ni un horizonte ideológico en común. Existen varios actores y actoras pero muchos de ellos aún no han cobrado relevancia política.",
     actores: ["Manfred Reyes Villa", "Chi Hyung Chung", "Rodrigo Paz"],
-    color: "bg-red-50",
+    color: "bg-green-100",
     icon: Users2,
     tags: ["Independiente", "Diverso", "Sin alianza"],
   },
@@ -251,11 +251,8 @@ export default function Home() {
                         <img
                           src={feature.image || "/placeholder.svg"}
                           alt={feature.name}
-                          className="object-cover w-full h-full"
+                          className="object-contain w-full h-full"
                         />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <feature.icon className="h-24 w-24 text-primary/70" />
-                        </div>
                       </div>
                     </div>
 
@@ -375,7 +372,7 @@ export default function Home() {
           </div>
 
           <div id="timeline" className="mt-16 sm:mt-20">
-            <h2 className="text-3xl font-bold mb-6 font-round">ELECCIONES PRESIDENCIALES Y LEGISLATIVAS</h2>
+            <h2 className="text-3xl font-bold mb-6 font-round">CALENDARIO PARA LAS ELECCIONES PRESIDENCIALES Y LEGISLATIVAS</h2>
             <div className="relative border-l border-foreground/20">
               {timelineEvents.map((event, index) => (
                 <div key={index} className="mb-8 ml-4">
@@ -539,7 +536,7 @@ export default function Home() {
                               <ul className="space-y-2">
                                 {bloque.actores.map((actor, idx) => (
                                   <li key={idx} className="flex items-start">
-                                    <span className="inline-block h-6 w-6 rounded-full bg-gray-200 flex-shrink-0 mr-2"></span>
+                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-gray-700 flex-shrink-0 mr-3 mt-2.5"></span>
                                     <span className="text-lg">{actor}</span>
                                   </li>
                                 ))}

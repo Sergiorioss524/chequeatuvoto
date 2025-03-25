@@ -27,7 +27,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center h-16">
   <Image
-    src="/logo.svg"
+    src="/logo.png"
     alt="Logo"
     width={120}
     height={40}

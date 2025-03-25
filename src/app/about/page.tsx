@@ -27,8 +27,8 @@ const TikTok = () => (
 
 const socialLinks = [
   {
-    name: "La Aparicio (FOTO)",
-    image: "/placeholder.svg?height=150&width=250",
+    name: "La Aparicio",
+    image: "/imagenes2/IMAGENES PAGINA WEB/natalia aparicio.jpg",
     imageAlt: "La Aparicio",
     links: [
       { platform: "Instagram", url: "https://www.instagram.com/la.aparicioooo/", icon: Instagram },
@@ -37,8 +37,8 @@ const socialLinks = [
     ],
   },
   {
-    name: "Presente Bolivia (LOGO)",
-    image: "/placeholder.svg?height=150&width=250",
+    name: "Presente Bolivia",
+    image: "/imagenes2/IMAGENES PAGINA WEB/presente.png",
     imageAlt: "Presente Bolivia",
     links: [
       { platform: "Instagram", url: "https://www.instagram.com/presente.bo/", icon: Instagram },
@@ -47,8 +47,8 @@ const socialLinks = [
     ],
   },
   {
-    name: "Chequea Bolivia (LOGO)",
-    image: "/placeholder.svg?height=150&width=250",
+    name: "Chequea Bolivia)",
+    image: "/imagenes2/IMAGENES PAGINA WEB/chequea Bolivia.png",
     imageAlt: "Chequea Bolivia",
     links: [
       { platform: "Instagram", url: "https://www.instagram.com/chequeabolivia/", icon: Instagram },
@@ -89,7 +89,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl font-bold mb-4 font-round">Quiénes Somos</h1>
+            <h1 className="text-4xl font-bold mb-4 font-round">QUIENES SOMOS</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Conoce más sobre nuestra iniciativa apartidista para informar a la ciudadanía
             </p>
@@ -142,13 +142,13 @@ export default function AboutPage() {
                       no caer en la desinformación, y por supuesto, información básica electoral como el calendario
                       electoral y el marco normativo para las elecciones.
                     </p>
-                    <p>
+                    <p className="text-lg">
                       Creemos en el derecho de cada ciudadano y ciudadana a tomar decisiones informadas y sin
                       manipulaciones. Entendemos que en nuestro mundo digital donde la información fluye a gran
                       velocidad, <span className="font-semibold">Chequea Tu Voto</span> es una herramienta importante
                       para ejercer este derecho.
                     </p>
-                    <p>Esperamos que esta página sea de utilidad, por favor dejen sus comentarios y sugerencias.</p>
+                    <p className="text-lg">Esperamos que esta página sea de utilidad, por favor dejen sus comentarios y sugerencias.</p>
                   </div>
                 </CardContent>
               </Card>
@@ -240,7 +240,7 @@ export default function AboutPage() {
                           </div>
 
                           {/* Right side - Image */}
-                          <div className="bg-gray-100 h-full min-h-[180px] relative">
+                          <div className="bg-gray-100 h-[200px] min-h-[250px] relative">
                             <img
                               src={org.image || "/placeholder.svg"}
                               alt={org.imageAlt}
