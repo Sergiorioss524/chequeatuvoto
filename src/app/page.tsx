@@ -143,7 +143,7 @@ const bloques = [
   {
     id: "evista",
     name: "Bloque Evista",
-    image: "/imagenes2/IMAGENES PAGINA WEB/Mas.png",
+    image: "/imagenes2/IMAGENES PAGINA WEB/MAS.png",
     description:
       "Este bloque está dirigido por Evo Morales quien a la fecha se encuentra inhabilitado en conformidad con el Auto Constitucional 0063/2024 emitido por Tribunal Constitucional cuando aún los magistrados de este tribunal no se encontraban auto prorrogados.",
     actores: ["Evo Morales", "Andrónico Rodríguez"],
