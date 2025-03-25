@@ -125,7 +125,7 @@ const bloques = [
     description:
       "Este bloque es una alianza de políticos que han ocupado cargos públicos en el pasado. A excepción de Luis Fernando Camacho quien antes de ser candidato en 2019 y 2020, ocupó el cargo de Presidente del Comité Cívico Pro Santa Cruz.",
     actores: ["Samuel Doria Medina", "Jorge Tuto Quiroga Ramírez", "Amparo Ballivián Cuellar"],
-    color: "bg-purple-100",
+    color: "bg-orange-100",
     icon: Building,
     tags: ["Oposición", "Centro-derecha", "Alianza"],
   },
